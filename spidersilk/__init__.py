@@ -50,7 +50,7 @@ class Httpd(Deconfigurable):
         for domain in self.domains:
             if default_hostname == domain.hostname:
                 self.default = domain
-        if self.default == None:
+        if self.default is None:
             msg = "Httpd 'default' parameter must specify the hostname of a provided Domain object"
             raise ValueError(msg)
         return self.default

@@ -90,11 +90,10 @@ class Deconfigurable(object):
 def parameter(param, required=True, depends_on=tuple()):
     def decorator(f):
         def wrapper(self, kwargs):
-            if required == True:
-                if param not in kwargs:
-                    msg = "'%s' object missing required '%s' parameter."
-                    ctx = (self.__class__.__name__, param)
-                    raise RequiredParameterError(msg % ctx)
+            if required and param not in kwargs::
+                msg = "'%s' object missing required '%s' parameter."
+                ctx = (self.__class__.__name__, param)
+                raise RequiredParameterError(msg % ctx)
             return f(self, kwargs)
         setattr(wrapper, '__param__', param)
         setattr(wrapper, '__required__', required)

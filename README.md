@@ -11,8 +11,8 @@ script:
 
 Once installed you can use objects imported from spidersilk to define how your
 twisted.web resources should be hosted. The main objects involved are
-`spidersilk.Httpd` and `spidersilk. The following is an extremely simple example
-of hosting two twisted.web resources:
+`spidersilk.Httpd` and `spidersilk.Domain`. The following is an extremely simple
+example of hosting two twisted.web resources:
 
 
     from twisted.web.static import File
@@ -39,7 +39,7 @@ of hosting two twisted.web resources:
 In this example, after the imports, we begin by initializing a `spiderweb.Httpd`
 instance. It has a few named arguments, like what port to host on. The `default`
 parameter specifies the hostname of the Domain resource that should be served if
-the requet does not match any other hostname. Then, we specify a list of
+the request does not match any other hostname. Then, we specify a list of
 initialized `spidersilk.Domain` objects each of which declares what virtual-host
 the corresponding resource should be hosted under.
 
