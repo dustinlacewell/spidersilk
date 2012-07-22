@@ -1,3 +1,5 @@
+from twisted.web import vhost
+
 from spidersilk.deconf import Deconfigurable, parameter
 
 class HTTPd(Deconfigurable):
