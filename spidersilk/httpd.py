@@ -1,6 +1,5 @@
 from twisted.web import vhost, server
-from twisted.application import service
-from twisted import internet
+from twisted.application import service, internet
 
 from spidersilk.deconf import Deconfigurable, parameter
 
