@@ -1,4 +1,4 @@
-from twisted.web import vhost
+from twisted.web import vhost, server
 
 from spidersilk.deconf import Deconfigurable, parameter
 
