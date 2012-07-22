@@ -70,12 +70,6 @@ class Deconfigurable(object):
                 ctx = (chain[0], )
                 raise CyclicalDependencyError(msg % ctx)
             dep_method = self._param_methods.get(depname, None)
-            # erroneous dependency
-            if dep_method is None:
-                msg = "'%s' depends on '%s' parameter but %s has no method '%s'."
-                ctx = (param, depname, 
-                       self.__class__, '_arg_%s' % depname)
-                raise RequiredParameterError(msg % ctx)
             # new dependency
             if depname not in self._param_vals:
                 self._process_param(depname, dep_method, kwargs, chain=chain)
@@ -90,13 +84,13 @@ class Deconfigurable(object):
 def parameter(param, required=True, depends_on=tuple()):
     def decorator(f):
         def wrapper(self, kwargs):
-            if required and param not in kwargs::
+            if required and param not in kwargs:
                 msg = "'%s' object missing required '%s' parameter."
                 ctx = (self.__class__.__name__, param)
                 raise RequiredParameterError(msg % ctx)
             return f(self, kwargs)
-        setattr(wrapper, '__param__', param)
-        setattr(wrapper, '__required__', required)
-        setattr(wrapper, '__dependencies__', depends_on)
+        wrapper.__param__ = param
+        wrapper.__required__ = required
+        wrapper.__dependencies__ = depends_on
         return wrapper
     return decorator
