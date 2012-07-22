@@ -1,4 +1,4 @@
-from spidersilk.deconf import Deconfigurable
+from spidersilk.deconf import Deconfigurable, parameter
 
 class HTTPd(Deconfigurable):
     def __init__(self, *args, **kwargs):
